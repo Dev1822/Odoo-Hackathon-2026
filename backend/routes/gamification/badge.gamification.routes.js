@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { authenticate, authorize } = require('../../middlewares/auth');
-const validate = require('../../middlewares/validate');
-const { createBadgeSchema } = require('../../utils/schemas/badge.schema');
-const badgeController = require('../../controllers/gamification/badge.controller');
+const { authenticate, authorize } = require('../../middlewares/auth.gamification');
+const validate = require('../../middlewares/validate.gamification');
+const { createBadgeSchema } = require('../../utils/schemas/badge.gamification.schema');
+const badgeController = require('../../controllers/gamification/badge.gamification.controller');
 
 router.post('/badges', authenticate, authorize('ADMIN'), validate(createBadgeSchema), badgeController.createBadge);
 router.get('/badges', authenticate, badgeController.listBadges);

@@ -1,5 +1,5 @@
 const prisma = require('../config/db');
-const badgeService = require('../services/gamification/badge.service');
+const badgeService = require('../services/gamification/badge.gamification.service');
 
 describe('Badge Service', () => {
   let testEmployee;
@@ -10,7 +10,7 @@ describe('Badge Service', () => {
     testEmployee = await prisma.employee.create({
       data: {
         name: 'Test User',
-        email: 'testuser@example.com',
+        email: `testuser-${Date.now()}-${Math.random().toString(36).substring(7)}@example.com`,
         role: 'EMPLOYEE',
         totalXp: 0
       }
@@ -30,6 +30,9 @@ describe('Badge Service', () => {
   afterAll(async () => {
     // Cleanup
     await prisma.employeeBadge.deleteMany({
+      where: { employeeId: testEmployee.id }
+    });
+    await prisma.notification.deleteMany({
       where: { employeeId: testEmployee.id }
     });
     await prisma.badge.delete({
