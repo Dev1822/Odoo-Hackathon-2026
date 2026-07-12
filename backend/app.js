@@ -99,6 +99,9 @@ app.use('/api/environmental/emission-factors', require('./routes/environmental/e
 app.use('/api/environmental/carbon-transactions', require('./routes/environmental/carbonTransaction.environmental.routes'));
 app.use('/api/environmental/goals', require('./routes/environmental/goal.environmental.routes'));
 
+// Shared routes
+app.use('/api/shared/activity-log', require('./routes/shared/activityLog.routes'));
+
 // Error handler (must be last)
 app.use(errorHandler);
 
