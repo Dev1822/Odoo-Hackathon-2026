@@ -1,18 +1,11 @@
 const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
 const uploadToCloudinary = require('../../utils/uploadToCloudinary');
+const badgeService = require('./badge.service');
 
-// Placeholder services - will be implemented in later commits
-const badgeService = {
-  checkAndAwardBadges: async (employeeId) => {
-    // Placeholder - implemented in commit 6
-    console.log(`Badge check called for employee ${employeeId}`);
-  }
-};
-
+// Placeholder notification service - will be implemented in commit 9
 const notificationService = {
   notify: async (employeeId, type, payload) => {
-    // Placeholder - implemented in commit 9
     console.log(`Notification sent to employee ${employeeId}: ${type}`, payload);
   }
 };
