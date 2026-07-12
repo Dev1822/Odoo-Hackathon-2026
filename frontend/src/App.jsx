@@ -22,6 +22,7 @@ function App() {
       
       {/* Fallback for other modules under construction */}
       {activeMenu !== 'Dashboard' && activeMenu !== 'Environmental' && activeMenu !== 'Gamification' && (
+        
         <div style={{ padding: '40px', textAlign: 'center' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, color: 'var(--color-text-primary)' }}>{activeMenu} - {activeSub}</h2>
           <p style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>This module is currently under construction.</p>
