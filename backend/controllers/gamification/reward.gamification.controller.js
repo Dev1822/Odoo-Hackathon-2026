@@ -1,6 +1,6 @@
-const asyncHandler = require('../../utils/asyncHandler');
-const apiResponse = require('../../utils/apiResponse');
-const rewardService = require('../../services/gamification/reward.service');
+const asyncHandler = require('../../utils/asyncHandler.gamification');
+const apiResponse = require('../../utils/apiResponse.gamification');
+const rewardService = require('../../services/gamification/reward.gamification.service');
 
 const listRewards = asyncHandler(async (req, res) => {
   const rewards = await rewardService.listRewards();
