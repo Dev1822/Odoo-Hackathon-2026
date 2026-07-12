@@ -41,6 +41,9 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// Gamification routes
+app.use('/api/gamification/challenges', require('./routes/gamification/challenge.routes'));
+
 // Error handler (must be last)
 app.use(errorHandler);
 
