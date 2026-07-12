@@ -47,6 +47,7 @@ app.use('/api/gamification', require('./routes/gamification/participation.routes
 app.use('/api/gamification', require('./routes/gamification/badge.routes'));
 app.use('/api/gamification', require('./routes/gamification/reward.routes'));
 app.use('/api/gamification', require('./routes/gamification/leaderboard.routes'));
+app.use('/api/gamification', require('./routes/gamification/notification.routes'));
 
 // Error handler (must be last)
 app.use(errorHandler);
