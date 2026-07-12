@@ -1,6 +1,6 @@
 const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
-const notificationService = require('../notification.service');
+const notificationService = require('../notification.gamification.service');
 
 const checkAndAwardBadges = async (employeeId) => {
   // Fetch employee stats
