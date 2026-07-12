@@ -1,4 +1,4 @@
-const leaderboardService = require('../services/gamification/leaderboard.service');
+const leaderboardService = require('../services/gamification/leaderboard.gamification.service');
 const cache = require('../utils/cache');
 
 describe('Leaderboard Service - Caching', () => {
