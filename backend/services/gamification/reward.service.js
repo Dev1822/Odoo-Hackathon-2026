@@ -1,6 +1,7 @@
 const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
 const { Prisma } = require('@prisma/client');
+const leaderboardService = require('./leaderboard.service');
 
 const notificationService = {
   notify: async (employeeId, type, payload) => {
@@ -116,6 +117,9 @@ const redeem = async (employeeId, rewardId) => {
     rewardName: result.reward.name,
     pointsDeducted: result.pointsDeducted
   });
+
+  // Invalidate leaderboard cache
+  leaderboardService.invalidateLeaderboardCache();
 
   return result;
 };

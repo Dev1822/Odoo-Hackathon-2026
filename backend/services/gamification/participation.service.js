@@ -2,6 +2,7 @@ const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
 const uploadToCloudinary = require('../../utils/uploadToCloudinary');
 const badgeService = require('./badge.service');
+const leaderboardService = require('./leaderboard.service');
 
 // Placeholder notification service - will be implemented in commit 9
 const notificationService = {
@@ -153,6 +154,9 @@ const decideApproval = async (participationId, decision, reviewerId) => {
       challengeTitle: participation.challenge.title,
       xpAwarded: participation.challenge.xp
     });
+
+    // Invalidate leaderboard cache
+    leaderboardService.invalidateLeaderboardCache();
   } else if (decision === 'REJECTED') {
     await prisma.challengeParticipation.update({
       where: { id: participationId },
