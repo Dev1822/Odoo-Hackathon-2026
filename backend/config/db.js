@@ -1,6 +1,7 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
+const { PrismaClient } = require('@prisma/client');
 
-// Create the connection pool. The pool-specific settings are the defaults
+// Create MySQL connection pool
 const pool = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 3306,
@@ -12,17 +13,25 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// Test the connection
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error('Database connection error:', err.message);
-  } else {
-    console.log('Successfully connected to the database.');
+// Test MySQL connection
+pool.getConnection()
+  .then((connection) => {
+    console.log('Successfully connected to MySQL database.');
     connection.release();
+  })
+  .catch((err) => {
+    console.error('MySQL database connection error:', err.message);
+  });
+
+// Initialize Prisma
+let prisma;
+if (process.env.NODE_ENV === 'production') {
+  prisma = new PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new PrismaClient();
   }
-});
+  prisma = global.prisma;
+}
 
-// Export the pool promise wrapper
-const promisePool = pool.promise();
-
-module.exports = promisePool;
+module.exports = { pool, prisma };

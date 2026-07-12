@@ -54,10 +54,10 @@ const MENU_ITEMS = [
     title: 'Gamification',
     icon: Trophy,
     submenus: [
-      { label: 'Challenges', path: '/' },
-      { label: 'Badges', path: '/' },
-      { label: 'Leaderboard', path: '/' },
-      { label: 'Rewards', path: '/' }
+      { label: 'Challenges', path: '/gamification' },
+      { label: 'Badges', path: '/gamification' },
+      { label: 'Leaderboard', path: '/gamification' },
+      { label: 'Rewards', path: '/gamification' }
     ]
   },
   {
@@ -125,7 +125,7 @@ export default function Sidebar({ activeMenu, setActiveMenu, activeSub, setActiv
                   }}
                 >
                   <div className="flex items-center gap-3">
-                    <item.icon size={18} color={isActive ? 'var(--color-primary)' : 'var(--color-text-secondary)'} />
+                    <item.icon size={18} color={isActive ? 'var(--color-primary-green)' : 'var(--color-text-secondary)'} />
                     <span className="text-sm">{item.title}</span>
                   </div>
                   {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}

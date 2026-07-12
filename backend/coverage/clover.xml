@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1783837993909" clover="3.2.0">
+  <project timestamp="1783837993909" name="All files">
+    <metrics statements="583" coveredstatements="439" conditionals="195" coveredconditionals="82" methods="80" coveredmethods="43" elements="858" coveredelements="564" complexity="0" loc="583" ncloc="583" packages="10" files="37" classes="37"/>
+    <package name="backend">
+      <metrics statements="31" coveredstatements="29" conditionals="9" coveredconditionals="4" methods="2" coveredmethods="1"/>
+      <file name="app.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\app.js">
+        <metrics statements="31" coveredstatements="29" conditionals="9" coveredconditionals="4" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="36" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="43" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="55" count="4" type="cond" truecount="1" falsecount="2"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.config">
+      <metrics statements="19" coveredstatements="14" conditionals="6" coveredconditionals="2" methods="1" coveredmethods="0"/>
+      <file name="cloudinary.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\config\cloudinary.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+      <file name="db.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\config\db.js">
+        <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="0" coveredmethods="0"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="5" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+      </file>
+      <file name="multer.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\config\multer.js">
+        <metrics statements="9" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.controllers.gamification">
+      <metrics statements="95" coveredstatements="51" conditionals="26" coveredconditionals="4" methods="21" coveredmethods="3"/>
+      <file name="badge.controller.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\controllers\gamification\badge.controller.js">
+        <metrics statements="13" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+      </file>
+      <file name="challenge.controller.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\controllers\gamification\challenge.controller.js">
+        <metrics statements="23" coveredstatements="16" conditionals="8" coveredconditionals="4" methods="6" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+      </file>
+      <file name="leaderboard.controller.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\controllers\gamification\leaderboard.controller.js">
+        <metrics statements="10" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+      </file>
+      <file name="notification.controller.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\controllers\gamification\notification.controller.js">
+        <metrics statements="11" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+      </file>
+      <file name="participation.controller.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\controllers\gamification\participation.controller.js">
+        <metrics statements="25" coveredstatements="10" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+      </file>
+      <file name="reward.controller.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\controllers\gamification\reward.controller.js">
+        <metrics statements="13" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.middlewares">
+      <metrics statements="72" coveredstatements="54" conditionals="36" coveredconditionals="17" methods="10" coveredmethods="8"/>
+      <file name="auth.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\middlewares\auth.js">
+        <metrics statements="24" coveredstatements="16" conditionals="12" coveredconditionals="5" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="18" type="stmt"/>
+        <line num="33" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+      </file>
+      <file name="errorHandler.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\middlewares\errorHandler.js">
+        <metrics statements="24" coveredstatements="19" conditionals="15" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="20" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="46" count="27" type="stmt"/>
+        <line num="47" count="27" type="stmt"/>
+        <line num="48" count="27" type="stmt"/>
+        <line num="49" count="27" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="52" count="27" type="stmt"/>
+        <line num="57" count="5" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="69" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="87" count="2" type="stmt"/>
+        <line num="90" count="5" type="stmt"/>
+      </file>
+      <file name="redeemRateLimiter.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\middlewares\redeemRateLimiter.js">
+        <metrics statements="4" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="12" count="2" type="stmt"/>
+      </file>
+      <file name="requestId.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\middlewares\requestId.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+      <file name="validate.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\middlewares\validate.js">
+        <metrics statements="14" coveredstatements="10" conditionals="3" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.routes.gamification">
+      <metrics statements="61" coveredstatements="61" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="badge.routes.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\routes\gamification\badge.routes.js">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+      </file>
+      <file name="challenge.routes.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\routes\gamification\challenge.routes.js">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="leaderboard.routes.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\routes\gamification\leaderboard.routes.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+      </file>
+      <file name="notification.routes.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\routes\gamification\notification.routes.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+      <file name="participation.routes.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\routes\gamification\participation.routes.js">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+      </file>
+      <file name="reward.routes.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\routes\gamification\reward.routes.js">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.services">
+      <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="notification.service.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\services\notification.service.js">
+        <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="30" count="6" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="54" count="6" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="59" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="63" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="75" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.services.gamification">
+      <metrics statements="230" coveredstatements="162" conditionals="100" coveredconditionals="45" methods="29" coveredmethods="17"/>
+      <file name="badge.service.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\services\gamification\badge.service.js">
+        <metrics statements="57" coveredstatements="35" conditionals="22" coveredconditionals="9" methods="7" coveredmethods="3"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="23" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+        <line num="48" count="23" type="stmt"/>
+        <line num="49" count="23" type="stmt"/>
+        <line num="51" count="23" type="cond" truecount="1" falsecount="1"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="23" type="stmt"/>
+        <line num="57" count="23" type="cond" truecount="1" falsecount="5"/>
+        <line num="59" count="23" type="stmt"/>
+        <line num="60" count="23" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="6" type="stmt"/>
+        <line num="80" count="6" type="stmt"/>
+        <line num="87" count="2" type="stmt"/>
+        <line num="93" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="95" count="4" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="104" count="4" type="stmt"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="107" count="2" type="stmt"/>
+        <line num="108" count="2" type="stmt"/>
+        <line num="110" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="111" count="1" type="stmt"/>
+        <line num="114" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="118" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="122" count="0" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="129" count="4" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="136" count="4" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
+        <line num="151" count="4" type="stmt"/>
+      </file>
+      <file name="challenge.service.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\services\gamification\challenge.service.js">
+        <metrics statements="45" coveredstatements="26" conditionals="22" coveredconditionals="7" methods="6" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="71" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="90" count="2" type="stmt"/>
+        <line num="91" count="2" type="stmt"/>
+        <line num="95" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="99" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="111" count="1" type="stmt"/>
+        <line num="114" count="2" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="124" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="128" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="132" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="143" count="2" type="stmt"/>
+      </file>
+      <file name="leaderboard.service.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\services\gamification\leaderboard.service.js">
+        <metrics statements="29" coveredstatements="19" conditionals="18" coveredconditionals="6" methods="5" coveredmethods="3"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="5" type="cond" truecount="0" falsecount="1"/>
+        <line num="6" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="40" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="62" count="5" type="cond" truecount="0" falsecount="1"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="100" count="5" type="stmt"/>
+        <line num="101" count="3" type="stmt"/>
+        <line num="104" count="5" type="stmt"/>
+      </file>
+      <file name="participation.service.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\services\gamification\participation.service.js">
+        <metrics statements="61" coveredstatements="54" conditionals="26" coveredconditionals="16" methods="6" coveredmethods="6"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="13" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="45" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="71" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="89" count="3" type="stmt"/>
+        <line num="90" count="3" type="stmt"/>
+        <line num="98" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="102" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="103" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="140" count="1" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="146" count="1" type="stmt"/>
+        <line num="153" count="1" type="stmt"/>
+        <line num="154" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="155" count="1" type="stmt"/>
+        <line num="160" count="1" type="stmt"/>
+        <line num="166" count="2" type="stmt"/>
+        <line num="175" count="3" type="cond" truecount="0" falsecount="2"/>
+        <line num="176" count="1" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
+        <line num="191" count="1" type="stmt"/>
+        <line num="202" count="3" type="stmt"/>
+      </file>
+      <file name="reward.service.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\services\gamification\reward.service.js">
+        <metrics statements="38" coveredstatements="28" conditionals="12" coveredconditionals="7" methods="5" coveredmethods="2"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="20" type="stmt"/>
+        <line num="33" count="20" type="stmt"/>
+        <line num="37" count="20" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="20" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="20" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="20" type="stmt"/>
+        <line num="55" count="20" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="20" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="62" count="20" type="stmt"/>
+        <line num="68" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="69" count="19" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="116" count="1" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="121" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.tests.mocks">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="uuid.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\tests\mocks\uuid.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.utils">
+      <metrics statements="36" coveredstatements="29" conditionals="12" coveredconditionals="6" methods="12" coveredmethods="9"/>
+      <file name="apiResponse.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\apiResponse.js">
+        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="asyncHandler.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\asyncHandler.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="42" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+      <file name="cache.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\cache.js">
+        <metrics statements="9" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="6" coveredmethods="5"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+      </file>
+      <file name="stateMachine.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\stateMachine.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="uploadToCloudinary.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\uploadToCloudinary.js">
+        <metrics statements="12" coveredstatements="6" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="backend.utils.schemas">
+      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="badge.schema.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\schemas\badge.schema.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+      <file name="challenge.schema.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\schemas\challenge.schema.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+      </file>
+      <file name="participation.schema.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\schemas\participation.schema.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+      <file name="reward.schema.js" path="C:\Users\Neetu patel\OneDrive\Desktop\Odoo_2026\Odoo-Hackathon-2026\backend\utils\schemas\reward.schema.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -1,0 +1,199 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ---- STUB SHARED MODELS (sync with team before final merge) ----
+model Employee {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  departmentId Int?
+  department   Department? @relation(fields: [departmentId], references: [id])
+  role         Role     @default(EMPLOYEE)
+  totalXp      Int      @default(0)  // denormalized cache; source of truth is XpLedgerEntry
+  createdAt    DateTime @default(now())
+
+  challengeParticipations ChallengeParticipation[]
+  employeeBadges          EmployeeBadge[]
+  redemptions             RewardRedemption[]
+  xpLedgerEntries         XpLedgerEntry[]
+  notifications           Notification[]
+}
+
+model Department {
+  id        Int        @id @default(autoincrement())
+  name      String
+  code      String     @unique
+  employees Employee[]
+}
+
+enum Role {
+  EMPLOYEE
+  MANAGER
+  ADMIN
+}
+
+model Category {
+  id     Int            @id @default(autoincrement())
+  name   String
+  type   CategoryType
+  status CategoryStatus @default(ACTIVE)
+
+  challenges Challenge[]
+
+  @@unique([name, type])
+}
+
+enum CategoryType {
+  CSR_ACTIVITY
+  CHALLENGE
+}
+
+enum CategoryStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// ---- GAMIFICATION MODELS ----
+model Challenge {
+  id               Int             @id @default(autoincrement())
+  title            String
+  categoryId       Int
+  category         Category        @relation(fields: [categoryId], references: [id])
+  description      String          @db.Text
+  xp               Int
+  difficulty       Difficulty
+  evidenceRequired Boolean         @default(false)
+  deadline         DateTime?
+  status           ChallengeStatus @default(DRAFT)
+  createdById      Int
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  participations ChallengeParticipation[]
+
+  @@index([status])
+  @@index([categoryId])
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+enum ChallengeStatus {
+  DRAFT
+  ACTIVE
+  UNDER_REVIEW
+  COMPLETED
+  ARCHIVED
+}
+
+model ChallengeParticipation {
+  id             Int            @id @default(autoincrement())
+  challengeId    Int
+  challenge      Challenge      @relation(fields: [challengeId], references: [id])
+  employeeId     Int
+  employee       Employee       @relation(fields: [employeeId], references: [id])
+  progress       Int            @default(0)
+  proofUrl       String?
+  approvalStatus ApprovalStatus @default(PENDING)
+  xpAwarded      Int            @default(0)
+  joinedAt       DateTime       @default(now())
+  completedAt    DateTime?
+
+  @@unique([challengeId, employeeId])
+  @@index([employeeId])
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Badge {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @db.Text
+  icon        String?
+  unlockRule  Json
+  createdAt   DateTime @default(now())
+
+  employeeBadges EmployeeBadge[]
+}
+
+model EmployeeBadge {
+  id         Int      @id @default(autoincrement())
+  employeeId Int
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  badgeId    Int
+  badge      Badge    @relation(fields: [badgeId], references: [id])
+  awardedAt  DateTime @default(now())
+
+  @@unique([employeeId, badgeId])
+}
+
+model Reward {
+  id             Int          @id @default(autoincrement())
+  name           String
+  description    String       @db.Text
+  pointsRequired Int
+  stock          Int          @default(0)
+  status         RewardStatus @default(ACTIVE)
+
+  redemptions RewardRedemption[]
+}
+
+enum RewardStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model RewardRedemption {
+  id             Int      @id @default(autoincrement())
+  employeeId     Int
+  employee       Employee @relation(fields: [employeeId], references: [id])
+  rewardId       Int
+  reward         Reward   @relation(fields: [rewardId], references: [id])
+  pointsDeducted Int
+  redeemedAt     DateTime @default(now())
+
+  @@index([employeeId])
+}
+
+model XpLedgerEntry {
+  id         Int          @id @default(autoincrement())
+  employeeId Int
+  employee   Employee     @relation(fields: [employeeId], references: [id])
+  sourceType XpSourceType
+  sourceId   Int?
+  points     Int
+  createdAt  DateTime     @default(now())
+
+  @@index([employeeId])
+}
+
+enum XpSourceType {
+  CHALLENGE
+  CSR_ACTIVITY
+  REDEMPTION
+  ADJUSTMENT
+}
+
+model Notification {
+  id         Int      @id @default(autoincrement())
+  employeeId Int
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  type       String
+  payload    Json
+  read       Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([employeeId])
+}
