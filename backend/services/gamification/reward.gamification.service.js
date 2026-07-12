@@ -1,8 +1,8 @@
 const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
 const { Prisma } = require('@prisma/client');
-const leaderboardService = require('./leaderboard.service');
-const notificationService = require('../notification.service');
+const leaderboardService = require('./leaderboard.gamification.service');
+const notificationService = require('../notification.gamification.service');
 
 const listRewards = async () => {
   const rewards = await prisma.reward.findMany({
@@ -60,7 +60,7 @@ const redeem = async (employeeId, rewardId) => {
 
     // 3. Atomic stock decrement using raw SQL
     const affectedRows = await tx.$executeRaw`
-      UPDATE rewards 
+      UPDATE Reward 
       SET stock = stock - 1 
       WHERE id = ${rewardId} AND stock > 0
     `;
