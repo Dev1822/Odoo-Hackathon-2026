@@ -1,6 +1,6 @@
 const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
-const { canTransition } = require('../../utils/stateMachine');
+const { canTransition } = require('../../utils/stateMachine.gamification');
 
 const createChallenge = async (data, creatorId) => {
   const challenge = await prisma.challenge.create({
