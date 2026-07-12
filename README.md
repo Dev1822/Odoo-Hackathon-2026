@@ -1,6 +1,6 @@
-# EcoSphere Gamification Module Backend
+# EcoSphere ESG & Gamification Module Backend
 
-This is the backend implementation for the Gamification module of EcoSphere.
+This is the backend implementation for the Environmental, Shared Infrastructure, and Gamification modules of EcoSphere.
 
 ## Getting Started
 
@@ -22,9 +22,9 @@ This is the backend implementation for the Gamification module of EcoSphere.
 3. Set up the Environment Variables:
    Create a `.env` file in the `backend/` directory by copying the structure of `.env.example` and filling in your credentials.
 
-4. Run Database Migrations:
+4. Run Database Migrations/Push:
    ```bash
-   npx prisma migrate dev
+   npx prisma db push --force-reset
    ```
 
 5. Seed the Database:
@@ -61,6 +61,26 @@ This is the backend implementation for the Gamification module of EcoSphere.
 
 ---
 
+## Shared Infrastructure — Coordinate Before Changing
+
+The shared tables and services below are consumed by **Environmental, Social, Governance, and Gamification** features. Please align on signatures and conventions prior to modifying these files:
+
+### 1. `ActivityLog` Event Types
+Always log events via `activityLogService.log()`. Standardized `eventType` names are:
+- `GOAL_COMPLETED` (Environmental)
+- `CARBON_TRANSACTION_LOGGED` (Environmental)
+- `CHALLENGE_APPROVED` (Gamification)
+- `REWARD_REDEEMED` (Gamification)
+
+### 2. `DepartmentScore` Column Ownership
+Each module aggregates its own score category column:
+- `environmentalScore` -> Owned by Environmental module (recalculated on Goal Completion/Emissions changes).
+- `socialScore` -> Owned by Social module (recalculated on CSR/Training completion).
+- `governanceScore` -> Owned by Governance module.
+- `totalScore` -> Computed dynamically based on organizational ESG weights (Environmental 40%, Social 30%, Governance 30%).
+
+---
+
 ## API Endpoints Reference
 
 ### Health check
@@ -68,17 +88,63 @@ This is the backend implementation for the Gamification module of EcoSphere.
 |---|---|---|---|
 | `GET` | `/api/health` | Public | Returns `{ status: 'ok' }` to verify server is active |
 
-### Challenges
+### Emission Factors (Environmental)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `POST` | `/api/environmental/emission-factors` | `MANAGER`, `ADMIN` | Create a new active emission factor conversion rate |
+| `GET` | `/api/environmental/emission-factors` | Authenticated | List all emission factors with optional category filter |
+| `GET` | `/api/environmental/emission-factors/:id` | Authenticated | Retrieve a specific emission factor by ID |
+| `PUT` | `/api/environmental/emission-factors/:id` | `MANAGER`, `ADMIN` | Update emission factor (does not retroactively affect past transactions) |
+| `PATCH` | `/api/environmental/emission-factors/:id/deactivate` | `ADMIN` | Soft-deactivate an emission factor (never hard-deleted) |
+
+### Carbon Transactions (Environmental)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `POST` | `/api/environmental/carbon-transactions` | `MANAGER`, `ADMIN` | Log a manual carbon transaction (server-side CO2e calculated) |
+| `GET` | `/api/environmental/carbon-transactions` | Authenticated | List transactions with filters (Department, Source module, Date range) |
+| `GET` | `/api/environmental/carbon-transactions/trend` | Authenticated | Aggregate organization or department emissions trend over N months |
+
+### Environmental Goals (Environmental)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `POST` | `/api/environmental/goals` | `MANAGER`, `ADMIN` | Set up a new environmental reduction goal |
+| `GET` | `/api/environmental/goals` | Authenticated | List goals with search and status filters |
+| `PUT` | `/api/environmental/goals/:id` | `MANAGER`, `ADMIN` | Update goal details (cannot directly edit current progress) |
+| `DELETE` | `/api/environmental/goals/:id` | `ADMIN` | Hard delete an environmental goal |
+
+### Activity Logs (Shared)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `GET` | `/api/shared/activity-log` | Authenticated | Fetch recent cross-cutting activity logs |
+
+### Department Scores (Shared)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `GET` | `/api/shared/department-scores` | Authenticated | Retrieve all department total ESG rankings |
+| `GET` | `/api/shared/department-scores/overall` | Authenticated | Fetch overall ESG score (employee-weighted average) |
+| `GET` | `/api/shared/department-scores/:departmentId` | Authenticated | Retrieve detailed scores of a specific department |
+
+### Executive Dashboard Overview (Shared)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `GET` | `/api/dashboard/overview` | Authenticated | Get cached executive overview widget datasets |
+
+### Custom Reports (Shared)
+| Method | Endpoint | Required Role | Description |
+|---|---|---|---|
+| `GET` | `/api/reports/environmental` | `MANAGER`, `ADMIN` | Stream filtered environmental reports (Format: CSV, Excel, PDF) |
+
+### Challenges (Gamification)
 | Method | Endpoint | Required Role | Description |
 |---|---|---|---|
 | `POST` | `/api/gamification/challenges` | `MANAGER`, `ADMIN` | Create a new challenge (initially `DRAFT`) |
 | `GET` | `/api/gamification/challenges` | Authenticated | List filterable and paginated challenges |
 | `GET` | `/api/gamification/challenges/:id` | Authenticated | Get challenge details |
 | `PUT` | `/api/gamification/challenges/:id` | `MANAGER`, `ADMIN` | Update challenge (only if `DRAFT`) |
-| `PATCH` | `/api/gamification/challenges/:id/status` | `MANAGER`, `ADMIN` | Transition status of challenge (valid transitions only) |
+| `PATCH` | `/api/gamification/challenges/:id/status` | `MANAGER`, `ADMIN` | Transition status of challenge |
 | `DELETE` | `/api/gamification/challenges/:id` | `ADMIN` | Delete challenge (only if `DRAFT` and 0 participants) |
 
-### Participation
+### Participation (Gamification)
 | Method | Endpoint | Required Role | Description |
 |---|---|---|---|
 | `POST` | `/api/gamification/challenges/:id/join` | Authenticated | Join an active challenge |
@@ -88,26 +154,26 @@ This is the backend implementation for the Gamification module of EcoSphere.
 | `PATCH` | `/api/gamification/participation/:id/reject` | `MANAGER`, `ADMIN` | Reject completion approval request |
 | `GET` | `/api/gamification/participation` | `MANAGER`, `ADMIN` | List all participations |
 
-### Badges
+### Badges (Gamification)
 | Method | Endpoint | Required Role | Description |
 |---|---|---|---|
 | `POST` | `/api/gamification/badges` | `ADMIN` | Create a new badge |
 | `GET` | `/api/gamification/badges` | Authenticated | List all badges |
 | `GET` | `/api/gamification/employees/:id/badges` | Authenticated | Get badges awarded to an employee |
 
-### Rewards Catalog
+### Rewards Catalog (Gamification)
 | Method | Endpoint | Required Role | Description |
 |---|---|---|---|
 | `GET` | `/api/gamification/rewards` | Authenticated | List all available rewards |
 | `POST` | `/api/gamification/rewards` | `ADMIN` | Create a new reward |
-| `POST` | `/api/gamification/rewards/:id/redeem` | Authenticated | Redeem a reward using XP (Rate-limited) |
+| `POST` | `/api/gamification/rewards/:id/redeem` | Authenticated | Redeem a reward using XP |
 
-### Leaderboard
+### Leaderboard (Gamification)
 | Method | Endpoint | Required Role | Description |
 |---|---|---|---|
 | `GET` | `/api/gamification/leaderboard` | Authenticated | Get cached leaderboard (employee/department scope) |
 
-### Notifications
+### Notifications (Gamification)
 | Method | Endpoint | Required Role | Description |
 |---|---|---|---|
 | `GET` | `/api/gamification/notifications` | Authenticated | Retrieve paginated list of user notifications |

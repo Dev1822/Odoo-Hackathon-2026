@@ -6,6 +6,24 @@ async function purge() {
   
   try {
     // Delete in order to satisfy foreign key constraints
+    await prisma.departmentScore.deleteMany({});
+    console.log('Cleared Department Scores');
+
+    await prisma.activityLog.deleteMany({});
+    console.log('Cleared Activity Logs');
+
+    await prisma.carbonTransaction.deleteMany({});
+    console.log('Cleared Carbon Transactions');
+
+    await prisma.environmentalGoal.deleteMany({});
+    console.log('Cleared Environmental Goals');
+
+    await prisma.productEsgProfile.deleteMany({});
+    console.log('Cleared Product ESG Profiles');
+
+    await prisma.emissionFactor.deleteMany({});
+    console.log('Cleared Emission Factors');
+
     await prisma.notification.deleteMany({});
     console.log('Cleared Notifications');
 
