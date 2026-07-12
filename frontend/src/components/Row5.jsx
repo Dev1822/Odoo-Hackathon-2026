@@ -1,14 +1,16 @@
 const leaderboard = [
-  { rank: '🥇', name: 'Emma', xp: '2450 XP', level: 12, title: '🌿 Eco Champion' },
-  { rank: '🥈', name: 'John', xp: '2310 XP', level: 11, title: '' },
-  { rank: '🥉', name: 'Priya', xp: '2200 XP', level: 10, title: '' },
-  { rank: '4', name: 'Alex', xp: '1980 XP', level: 9, title: '' },
+  { rank: '1', name: 'Emma Watson', dept: 'HR', xp: '2450', badge: 'Eco Champion' },
+  { rank: '2', name: 'John Doe', dept: 'Sales', xp: '2310', badge: 'Sustainability Pro' },
+  { rank: '3', name: 'Priya Singh', dept: 'Manufacturing', xp: '2200', badge: 'Green Advocate' },
+  { rank: '4', name: 'Alex Lee', dept: 'Logistics', xp: '1980', badge: '-' },
+  { rank: '5', name: 'Sarah Connor', dept: 'IT', xp: '1850', badge: '-' },
 ];
 
 const rewards = [
-  { title: 'Coffee Coupon', xp: 200, stock: '45 left' },
-  { title: 'Movie Ticket', xp: 500, stock: '12 left' },
-  { title: 'Amazon Voucher', xp: 1200, stock: '5 left' },
+  { reward: 'Coffee Coupon', xp: '200', stock: '45' },
+  { reward: 'Movie Ticket', xp: '500', stock: '12' },
+  { reward: 'Amazon Voucher', xp: '1200', stock: '5' },
+  { reward: 'Extra Vacation Day', xp: '5000', stock: '2' },
 ];
 
 export default function Row5() {
@@ -16,45 +18,57 @@ export default function Row5() {
     <div className="grid gap-6 mb-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px', marginBottom: '24px' }}>
       
       {/* Gamification Leaderboard (Left 6/12) */}
-      <div className="glass-panel p-6 animate-fade-in delay-400" style={{ padding: '24px', gridColumn: 'span 6' }}>
-        <h3 className="font-semibold text-lg mb-6">Gamification Leaderboard</h3>
-        
-        <div className="flex-col gap-2" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {leaderboard.map((user, index) => (
-            <div key={user.name} className="flex items-center justify-between p-3" style={{ borderBottom: index !== leaderboard.length - 1 ? '1px solid var(--border-color)' : 'none' }}>
-              <div className="flex items-center gap-3">
-                <span style={{ width: '24px', textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>{user.rank}</span>
-                <div className="flex-col">
-                  <span className="font-medium text-sm">{user.name}</span>
-                  {user.title && <span className="text-xs text-green">{user.title}</span>}
-                </div>
-              </div>
-              <div className="flex-col items-end" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                <span className="text-sm font-bold text-orange">{user.xp}</span>
-                <span className="text-xs text-muted">Level {user.level}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="card p-6" style={{ padding: '24px', gridColumn: 'span 6', overflowX: 'auto' }}>
+        <h3 className="font-semibold text-lg mb-6 text-primary">Leaderboard</h3>
+        <table className="erp-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Employee</th>
+              <th>Department</th>
+              <th>XP</th>
+              <th>Badge</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboard.map((user) => (
+              <tr key={user.name}>
+                <td data-label="Rank" style={{ fontWeight: 600 }}>{user.rank}</td>
+                <td data-label="Employee">{user.name}</td>
+                <td data-label="Department">{user.dept}</td>
+                <td data-label="XP" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>{user.xp}</td>
+                <td data-label="Badge">{user.badge !== '-' ? <span style={{ background: '#F0FDF4', color: 'var(--color-primary)', padding: '2px 8px', borderRadius: '12px', fontSize: '12px', fontWeight: 500 }}>{user.badge}</span> : '-'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* Reward Store (Right 6/12) */}
-      <div className="glass-panel p-6 animate-fade-in delay-500" style={{ padding: '24px', gridColumn: 'span 6' }}>
-        <h3 className="font-semibold text-lg mb-6">Reward Store</h3>
-        
-        <div className="grid gap-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px' }}>
-          {rewards.map((reward) => (
-            <div key={reward.title} className="p-4 flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1" style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', border: '1px solid var(--border-color)', cursor: 'pointer' }}>
-              <div className="w-12 h-12 mb-3" style={{ width: '48px', height: '48px', background: 'var(--bg-card)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>
-                🎁
-              </div>
-              <span className="text-sm font-medium mb-1">{reward.title}</span>
-              <span className="text-xs font-bold text-orange mb-3">{reward.xp} XP</span>
-              <button className="btn-outline w-full justify-center text-xs" style={{ padding: '4px 0' }}>Redeem</button>
-              <span className="text-xs text-muted mt-2">{reward.stock}</span>
-            </div>
-          ))}
-        </div>
+      <div className="card p-6" style={{ padding: '24px', gridColumn: 'span 6', overflowX: 'auto' }}>
+        <h3 className="font-semibold text-lg mb-6 text-primary">Reward Store</h3>
+        <table className="erp-table">
+          <thead>
+            <tr>
+              <th>Reward</th>
+              <th>XP Required</th>
+              <th>Stock</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rewards.map((item) => (
+              <tr key={item.reward}>
+                <td data-label="Reward" style={{ fontWeight: 500 }}>{item.reward}</td>
+                <td data-label="XP Required" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>{item.xp}</td>
+                <td data-label="Stock">{item.stock} left</td>
+                <td data-label="Action">
+                  <button className="btn-outline" style={{ padding: '4px 8px', fontSize: '12px' }}>Redeem</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
     </div>
