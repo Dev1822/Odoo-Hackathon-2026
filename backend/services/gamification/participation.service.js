@@ -3,13 +3,7 @@ const { ApiError } = require('../../middlewares/errorHandler');
 const uploadToCloudinary = require('../../utils/uploadToCloudinary');
 const badgeService = require('./badge.service');
 const leaderboardService = require('./leaderboard.service');
-
-// Placeholder notification service - will be implemented in commit 9
-const notificationService = {
-  notify: async (employeeId, type, payload) => {
-    console.log(`Notification sent to employee ${employeeId}: ${type}`, payload);
-  }
-};
+const notificationService = require('../notification.service');
 
 const joinChallenge = async (challengeId, employeeId) => {
   const challenge = await prisma.challenge.findUnique({
