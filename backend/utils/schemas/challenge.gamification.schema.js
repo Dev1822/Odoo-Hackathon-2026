@@ -7,8 +7,7 @@ const createChallengeSchema = z.object({
   xp: z.number().int().min(0, 'XP must be non-negative'),
   difficulty: z.enum(['EASY', 'MEDIUM', 'HARD']),
   evidenceRequired: z.boolean().optional().default(false),
-  deadline: z.string().datetime().nullable().optional(),
-  createdById: z.number().int().positive('Creator ID must be positive')
+  deadline: z.string().datetime().nullable().optional()
 });
 
 const updateChallengeSchema = z.object({

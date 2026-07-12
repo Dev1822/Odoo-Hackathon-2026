@@ -1,9 +1,9 @@
 const prisma = require('../../config/db');
 const { ApiError } = require('../../middlewares/errorHandler');
 const uploadToCloudinary = require('../../utils/uploadToCloudinary');
-const badgeService = require('./badge.service');
-const leaderboardService = require('./leaderboard.service');
-const notificationService = require('../notification.service');
+const badgeService = require('./badge.gamification.service');
+const leaderboardService = require('./leaderboard.gamification.service');
+const notificationService = require('../notification.gamification.service');
 
 const joinChallenge = async (challengeId, employeeId) => {
   const challenge = await prisma.challenge.findUnique({
