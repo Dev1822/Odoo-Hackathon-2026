@@ -22,9 +22,9 @@ const getEmployeeLeaderboard = async ({ limit = 20, departmentId }) => {
         e.email,
         e.totalXp,
         d.name as departmentName,
-        RANK() OVER (ORDER BY e.totalXp DESC) as rank
-      FROM employees e
-      LEFT JOIN departments d ON e.departmentId = d.id
+        RANK() OVER (ORDER BY e.totalXp DESC) as \`rank\`
+      FROM Employee e
+      LEFT JOIN Department d ON e.departmentId = d.id
       WHERE e.departmentId = ${departmentId}
       GROUP BY e.id
       ORDER BY e.totalXp DESC
@@ -38,9 +38,9 @@ const getEmployeeLeaderboard = async ({ limit = 20, departmentId }) => {
         e.email,
         e.totalXp,
         d.name as departmentName,
-        RANK() OVER (ORDER BY e.totalXp DESC) as rank
-      FROM employees e
-      LEFT JOIN departments d ON e.departmentId = d.id
+        RANK() OVER (ORDER BY e.totalXp DESC) as \`rank\`
+      FROM Employee e
+      LEFT JOIN Department d ON e.departmentId = d.id
       GROUP BY e.id
       ORDER BY e.totalXp DESC
       LIMIT ${limit}
@@ -48,11 +48,15 @@ const getEmployeeLeaderboard = async ({ limit = 20, departmentId }) => {
   }
 
   const leaderboard = await prisma.$queryRaw(query);
+  const serialized = leaderboard.map(row => ({
+    ...row,
+    rank: row.rank ? Number(row.rank) : row.rank
+  }));
 
   // Cache the result
-  cache.set(cacheKey, leaderboard);
+  cache.set(cacheKey, serialized);
 
-  return leaderboard;
+  return serialized;
 };
 
 const getDepartmentLeaderboard = async ({ limit = 20 }) => {
@@ -71,20 +75,26 @@ const getDepartmentLeaderboard = async ({ limit = 20 }) => {
       d.code,
       SUM(e.totalXp) as totalXp,
       COUNT(e.id) as employeeCount,
-      RANK() OVER (ORDER BY SUM(e.totalXp) DESC) as rank
-    FROM departments d
-    LEFT JOIN employees e ON e.departmentId = d.id
+      RANK() OVER (ORDER BY SUM(e.totalXp) DESC) as \`rank\`
+    FROM Department d
+    LEFT JOIN Employee e ON e.departmentId = d.id
     GROUP BY d.id
     ORDER BY SUM(e.totalXp) DESC
     LIMIT ${limit}
   `;
 
   const leaderboard = await prisma.$queryRaw(query);
+  const serialized = leaderboard.map(row => ({
+    ...row,
+    totalXp: row.totalXp ? Number(row.totalXp) : 0,
+    employeeCount: row.employeeCount ? Number(row.employeeCount) : 0,
+    rank: row.rank ? Number(row.rank) : row.rank
+  }));
 
   // Cache the result
-  cache.set(cacheKey, leaderboard);
+  cache.set(cacheKey, serialized);
 
-  return leaderboard;
+  return serialized;
 };
 
 const invalidateLeaderboardCache = () => {

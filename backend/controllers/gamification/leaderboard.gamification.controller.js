@@ -1,6 +1,6 @@
-const asyncHandler = require('../../utils/asyncHandler');
-const apiResponse = require('../../utils/apiResponse');
-const leaderboardService = require('../../services/gamification/leaderboard.service');
+const asyncHandler = require('../../utils/asyncHandler.gamification');
+const apiResponse = require('../../utils/apiResponse.gamification');
+const leaderboardService = require('../../services/gamification/leaderboard.gamification.service');
 
 const getLeaderboard = asyncHandler(async (req, res) => {
   const { scope, departmentId, limit } = req.query;
