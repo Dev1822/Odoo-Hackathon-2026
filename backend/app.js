@@ -101,6 +101,7 @@ app.use('/api/environmental/goals', require('./routes/environmental/goal.environ
 
 // Shared routes
 app.use('/api/shared/activity-log', require('./routes/shared/activityLog.routes'));
+app.use('/api/shared/department-scores', require('./routes/shared/departmentScore.routes'));
 
 // Error handler (must be last)
 app.use(errorHandler);
