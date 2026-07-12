@@ -10,10 +10,10 @@ const deptEmissions = [
 ];
 
 const goals = [
-  { title: 'Reduce Carbon', progress: 82, color: 'var(--color-primary-green)' },
-  { title: 'CSR Participation', progress: 74, color: 'var(--color-blue)' },
-  { title: 'Policy Compliance', progress: 96, color: 'var(--color-purple)' },
-  { title: 'Training Completion', progress: 68, color: 'var(--color-orange)' },
+  { title: 'Reduce Carbon Footprint', progress: 82 },
+  { title: 'CSR Participation Target', progress: 74 },
+  { title: 'Policy Compliance Rate', progress: 96 },
+  { title: 'Employee Training Completion', progress: 68 },
 ];
 
 export default function Row3() {
@@ -21,43 +21,42 @@ export default function Row3() {
     <div className="grid gap-6 mb-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px', marginBottom: '24px' }}>
       
       {/* Carbon Analytics Bar Chart (Left 6/12) */}
-      <div className="glass-panel p-6 animate-fade-in delay-200" style={{ padding: '24px', gridColumn: 'span 6' }}>
-        <h3 className="font-semibold text-lg mb-6">Carbon Emissions by Department</h3>
+      <div className="card p-6" style={{ padding: '24px', gridColumn: 'span 6' }}>
+        <h3 className="font-semibold text-lg mb-6 text-primary">Carbon Emissions by Department</h3>
         <div style={{ width: '100%', height: '250px' }}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={deptEmissions} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" vertical={false} />
-              <XAxis dataKey="name" stroke="var(--color-text-muted)" fontSize={12} tickLine={false} axisLine={false} />
-              <YAxis stroke="var(--color-text-muted)" fontSize={12} tickLine={false} axisLine={false} />
+            <BarChart data={deptEmissions} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
+              <XAxis dataKey="name" stroke="#6B7280" fontSize={12} tickLine={false} axisLine={{ stroke: '#E5E7EB' }} />
+              <YAxis stroke="#6B7280" fontSize={12} tickLine={false} axisLine={{ stroke: '#E5E7EB' }} />
               <Tooltip 
-                cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                contentStyle={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px' }}
+                cursor={{ fill: '#F9FAFB' }}
+                contentStyle={{ backgroundColor: '#FFF', border: '1px solid #E5E7EB', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}
               />
-              <Bar dataKey="emissions" fill="var(--color-blue)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="emissions" fill="var(--color-secondary)" radius={[4, 4, 0, 0]} maxBarSize={40} />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
 
       {/* Goal Progress (Right 6/12) */}
-      <div className="glass-panel p-6 animate-fade-in delay-300" style={{ padding: '24px', gridColumn: 'span 6' }}>
-        <h3 className="font-semibold text-lg mb-6">Goal Progress</h3>
+      <div className="card p-6" style={{ padding: '24px', gridColumn: 'span 6' }}>
+        <h3 className="font-semibold text-lg mb-6 text-primary">Goal Progress</h3>
         
-        <div className="grid grid-cols-2 gap-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <div className="flex-col gap-6" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {goals.map(goal => (
-            <div key={goal.title} className="p-4" style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-sm font-medium text-secondary">{goal.title}</span>
-                <span className="text-sm font-bold" style={{ color: goal.color }}>{goal.progress}%</span>
+            <div key={goal.title}>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-primary">{goal.title}</span>
+                <span className="text-sm font-bold text-primary">{goal.progress}%</span>
               </div>
-              <div style={{ width: '100%', height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', overflow: 'hidden' }}>
+              <div style={{ width: '100%', height: '8px', background: '#F3F4F6', borderRadius: '4px', overflow: 'hidden' }}>
                 <div 
                   style={{ 
                     width: `${goal.progress}%`, 
                     height: '100%', 
-                    background: goal.color, 
-                    borderRadius: '4px',
-                    transition: 'width 1s ease-out'
+                    background: 'var(--color-primary)', 
+                    borderRadius: '4px'
                   }}
                 ></div>
               </div>
