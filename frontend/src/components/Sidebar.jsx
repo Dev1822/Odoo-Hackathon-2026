@@ -9,42 +9,76 @@ import {
   ChevronRight,
   ChevronDown
 } from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const MENU_ITEMS = [
   {
     title: 'Dashboard',
     icon: LayoutDashboard,
-    submenus: ['Executive Overview', 'ESG Analytics', 'Organization Overview']
+    submenus: [
+      { label: 'Executive Overview', path: '/' },
+      { label: 'ESG Analytics', path: '/' },
+      { label: 'Organization Overview', path: '/' }
+    ]
   },
   {
     title: 'Environmental',
     icon: Leaf,
-    submenus: ['Emission Tracking & Goals', 'Carbon Transactions', 'Emission Factors', 'Product Profiles']
+    submenus: [
+      { label: 'Emission Tracking & Goals', path: '/environmental' },
+      { label: 'Carbon Transactions', path: '/' },
+      { label: 'Emission Factors', path: '/' },
+      { label: 'Product Profiles', path: '/' }
+    ]
   },
   {
     title: 'Social',
     icon: Users,
-    submenus: ['CSR Activities', 'Diversity Dashboard', 'Training', 'Employee Engagement']
+    submenus: [
+      { label: 'CSR Activities', path: '/csr' },
+      { label: 'Employee Participation', path: '/participation' },
+      { label: 'Diversity Dashboard', path: '/diversity' }
+    ]
   },
   {
     title: 'Governance',
     icon: ShieldCheck,
-    submenus: ['Policies', 'Audits', 'Compliance', 'Risk Management']
+    submenus: [
+      { label: 'Policies', path: '/' },
+      { label: 'Audits', path: '/' },
+      { label: 'Compliance', path: '/' },
+      { label: 'Risk Management', path: '/' }
+    ]
   },
   {
     title: 'Gamification',
     icon: Trophy,
-    submenus: ['Challenges', 'Badges', 'Leaderboard', 'Rewards']
+    submenus: [
+      { label: 'Challenges', path: '/gamification' },
+      { label: 'Badges', path: '/gamification' },
+      { label: 'Leaderboard', path: '/gamification' },
+      { label: 'Rewards', path: '/gamification' }
+    ]
   },
   {
     title: 'Reports',
     icon: FileBarChart,
-    submenus: ['Environmental', 'Social', 'Governance', 'Custom Reports']
+    submenus: [
+      { label: 'Environmental', path: '/' },
+      { label: 'Social', path: '/' },
+      { label: 'Governance', path: '/' },
+      { label: 'Custom Reports', path: '/' }
+    ]
   },
   {
     title: 'Settings',
     icon: Settings,
-    submenus: ['Departments', 'Categories', 'User Roles', 'Organization']
+    submenus: [
+      { label: 'Departments', path: '/' },
+      { label: 'Categories', path: '/' },
+      { label: 'User Roles', path: '/' },
+      { label: 'Organization', path: '/' }
+    ]
   }
 ];
 
@@ -56,15 +90,9 @@ export default function Sidebar({ activeMenu, setActiveMenu, activeSub, setActiv
 
     const item = MENU_ITEMS.find(i => i.title === title);
     if (item && item.submenus.length > 0) {
-      setActiveSub(item.submenus[0]);
+      setActiveSub(item.submenus[0].label);
     }
 
-    onNavigate?.();
-  };
-
-  const handleSubClick = (sub, e) => {
-    e.stopPropagation();
-    setActiveSub(sub);
     onNavigate?.();
   };
 
@@ -106,22 +134,28 @@ export default function Sidebar({ activeMenu, setActiveMenu, activeSub, setActiv
                 {isExpanded && (
                   <div className="flex-col" style={{ padding: '4px 0 8px 36px', gap: '2px' }}>
                     {item.submenus.map(sub => (
-                      <button 
-                        key={sub} 
-                        className="text-sm text-left" 
-                        onClick={(e) => handleSubClick(sub, e)}
-                        style={{ 
+                      <NavLink
+                        key={sub.label}
+                        to={sub.path}
+                        className="submenu-item text-sm text-secondary"
+                        style={({ isActive }) => ({
                           padding: '6px 12px', 
                           border: 'none', 
-                          background: 'transparent', 
-                          color: activeSub === sub ? 'var(--color-primary-green)' : 'var(--color-text-secondary)',
-                          fontWeight: activeSub === sub ? 600 : 400,
+                          background: isActive ? 'transparent' : 'transparent', 
+                          color: isActive ? 'var(--color-primary-green)' : 'var(--color-text-secondary)',
+                          fontWeight: isActive ? 500 : 400,
                           cursor: 'pointer',
                           borderRadius: 'var(--border-radius-sm)',
+                          display: 'block',
+                          textDecoration: 'none'
+                        })}
+                        onClick={() => {
+                          setActiveMenu(item.title);
+                          setActiveSub(sub.label);
                         }}
                       >
-                        {sub}
-                      </button>
+                        {sub.label}
+                      </NavLink>
                     ))}
                   </div>
                 )}

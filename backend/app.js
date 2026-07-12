@@ -65,7 +65,7 @@ app.get('/api/health', (req, res) => {
 app.get('/api/dev-token/:userId', async (req, res, next) => {
   try {
     const jwt = require('jsonwebtoken');
-    const prisma = require('./config/db');
+    const { prisma } = require('./config/db');
     const employee = await prisma.employee.findUnique({
       where: { id: parseInt(req.params.userId) }
     });
@@ -85,6 +85,14 @@ app.get('/api/dev-token/:userId', async (req, res, next) => {
     next(error);
   }
 });
+
+// Serve static files (uploads for CSR proofs)
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Social/CSR routes
+const socialRoutes = require('./routes/social.routes');
+app.use('/api/v1/social', socialRoutes);
 
 // Gamification routes
 app.use('/api/gamification/challenges', require('./routes/gamification/challenge.gamification.routes'));
