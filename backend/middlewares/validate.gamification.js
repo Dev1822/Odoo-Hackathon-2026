@@ -10,7 +10,8 @@ const validate = (schema, source = 'body') => {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        const errorMessages = error.errors.map(err => ({
+        const issues = error.errors || error.issues || [];
+        const errorMessages = issues.map(err => ({
           field: err.path.join('.'),
           message: err.message
         }));
