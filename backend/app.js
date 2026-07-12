@@ -43,6 +43,7 @@ app.get('/api/health', (req, res) => {
 
 // Gamification routes
 app.use('/api/gamification/challenges', require('./routes/gamification/challenge.routes'));
+app.use('/api/gamification', require('./routes/gamification/participation.routes'));
 
 // Error handler (must be last)
 app.use(errorHandler);
