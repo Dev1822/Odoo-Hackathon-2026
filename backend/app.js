@@ -94,6 +94,9 @@ app.use('/api/gamification', require('./routes/gamification/reward.gamification.
 app.use('/api/gamification', require('./routes/gamification/leaderboard.gamification.routes'));
 app.use('/api/gamification', require('./routes/gamification/notification.gamification.routes'));
 
+// Environmental routes
+app.use('/api/environmental/emission-factors', require('./routes/environmental/emissionFactor.environmental.routes'));
+
 // Error handler (must be last)
 app.use(errorHandler);
 
