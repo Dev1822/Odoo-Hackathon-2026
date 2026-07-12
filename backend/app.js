@@ -102,6 +102,21 @@ app.use('/api/gamification', require('./routes/gamification/reward.gamification.
 app.use('/api/gamification', require('./routes/gamification/leaderboard.gamification.routes'));
 app.use('/api/gamification', require('./routes/gamification/notification.gamification.routes'));
 
+// Environmental routes
+app.use('/api/environmental/emission-factors', require('./routes/environmental/emissionFactor.environmental.routes'));
+app.use('/api/environmental/carbon-transactions', require('./routes/environmental/carbonTransaction.environmental.routes'));
+app.use('/api/environmental/goals', require('./routes/environmental/goal.environmental.routes'));
+
+// Shared routes
+app.use('/api/shared/activity-log', require('./routes/shared/activityLog.routes'));
+app.use('/api/shared/department-scores', require('./routes/shared/departmentScore.routes'));
+
+// Dashboard routes
+app.use('/api/dashboard', require('./routes/dashboard/dashboard.routes'));
+
+// Reports routes
+app.use('/api/reports', require('./routes/reports/report.routes'));
+
 // Error handler (must be last)
 app.use(errorHandler);
 

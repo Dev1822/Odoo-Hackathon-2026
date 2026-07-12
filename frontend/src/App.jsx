@@ -35,7 +35,7 @@ function App() {
         <Route path="/gamification" element={<GamificationTestbed initialTab={activeSub} />} />
       </Routes>
       
-      {/* Fallback for other menus */}
+      {/* Fallback for other modules under construction */}
       {activeMenu !== 'Dashboard' && activeMenu !== 'Social' && activeMenu !== 'Environmental' && activeMenu !== 'Gamification' && (
         <div style={{ padding: '40px', textAlign: 'center' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, color: 'var(--color-text-primary)' }}>{activeMenu} - {activeSub}</h2>

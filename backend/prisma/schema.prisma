@@ -18,11 +18,15 @@ model Employee {
   totalXp      Int      @default(0)  // denormalized cache; source of truth is XpLedgerEntry
   createdAt    DateTime @default(now())
 
+  // Gamification relations
   challengeParticipations ChallengeParticipation[]
   employeeBadges          EmployeeBadge[]
   redemptions             RewardRedemption[]
   xpLedgerEntries         XpLedgerEntry[]
   notifications           Notification[]
+
+  // Cross-module relations
+  activityLogs            ActivityLog[]
 }
 
 model Department {
@@ -30,6 +34,14 @@ model Department {
   name      String
   code      String     @unique
   employees Employee[]
+
+  // Environmental relations
+  carbonTransactions CarbonTransaction[]
+  environmentalGoals EnvironmentalGoal[]
+
+  // Cross-module relations
+  activityLogs       ActivityLog[]
+  departmentScore    DepartmentScore?
 }
 
 enum Role {
@@ -44,7 +56,8 @@ model Category {
   type   CategoryType
   status CategoryStatus @default(ACTIVE)
 
-  challenges Challenge[]
+  challenges      Challenge[]
+  emissionFactors EmissionFactor[]
 
   @@unique([name, type])
 }
@@ -52,6 +65,7 @@ model Category {
 enum CategoryType {
   CSR_ACTIVITY
   CHALLENGE
+  EMISSION_FACTOR
 }
 
 enum CategoryStatus {
@@ -196,4 +210,133 @@ model Notification {
   createdAt  DateTime @default(now())
 
   @@index([employeeId])
+}
+
+// ---- ENVIRONMENTAL MODELS ----
+model EmissionFactor {
+  id          Int          @id @default(autoincrement())
+  categoryId  Int
+  category    Category     @relation(fields: [categoryId], references: [id])
+  name        String
+  unit        String       // e.g. "kgCO2e/kWh", "kgCO2e/liter"
+  factorValue Decimal      @db.Decimal(12, 6)
+  source      String?      // e.g. "DEFRA 2025", for audit trail
+  validFrom   DateTime
+  validTo     DateTime?
+  status      FactorStatus @default(ACTIVE)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  carbonTransactions CarbonTransaction[]
+
+  @@index([categoryId, status])
+}
+
+enum FactorStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model ProductEsgProfile {
+  id              Int      @id @default(autoincrement())
+  productName     String
+  productCode     String   @unique
+  carbonFootprint Decimal  @db.Decimal(12, 4)
+  recyclable      Boolean  @default(false)
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  carbonTransactions CarbonTransaction[]
+}
+
+model CarbonTransaction {
+  id               Int               @id @default(autoincrement())
+  departmentId     Int
+  department       Department        @relation(fields: [departmentId], references: [id])
+  emissionFactorId Int
+  emissionFactor   EmissionFactor    @relation(fields: [emissionFactorId], references: [id])
+  productId        Int?
+  product          ProductEsgProfile? @relation(fields: [productId], references: [id])
+  sourceModule     SourceModule      // PURCHASE, MANUFACTURING, EXPENSE, FLEET, MANUAL
+  sourceRecordId   Int?              // FK into whichever module's record (loose coupling)
+  quantity         Decimal           @db.Decimal(12, 4) // e.g. liters, kWh consumed
+  calculatedCo2e   Decimal           @db.Decimal(12, 4) // quantity * emissionFactor.factorValue
+  autoCalculated   Boolean           @default(false)
+  transactionDate  DateTime
+  createdAt        DateTime          @default(now())
+
+  @@index([departmentId, transactionDate])
+  @@index([sourceModule])
+}
+
+enum SourceModule {
+  PURCHASE
+  MANUFACTURING
+  EXPENSE
+  FLEET
+  MANUAL
+}
+
+model EnvironmentalGoal {
+  id           Int        @id @default(autoincrement())
+  name         String
+  departmentId Int
+  department   Department @relation(fields: [departmentId], references: [id])
+  targetCo2e   Decimal    @db.Decimal(12, 4)
+  currentCo2e  Decimal    @db.Decimal(12, 4) @default(0) // recalculated, not manually edited
+  deadline     DateTime
+  status       GoalStatus @default(ACTIVE)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([departmentId, status])
+}
+
+enum GoalStatus {
+  ACTIVE
+  ON_TRACK
+  AT_RISK
+  COMPLETED
+  ARCHIVED
+}
+
+// ---- SHARED CROSS-MODULE INFRASTRUCTURE ----
+// Every module (Environmental, Social, Governance, Gamification) writes here.
+// Agree on eventType naming with the team before adding new ones.
+model ActivityLog {
+  id           Int         @id @default(autoincrement())
+  module       ModuleName
+  eventType    String      // e.g. 'GOAL_COMPLETED', 'CSR_COMPLETED', 'COMPLIANCE_ISSUE_RAISED'
+  description  String      // human-readable, pre-formatted
+  departmentId Int?
+  department   Department? @relation(fields: [departmentId], references: [id])
+  employeeId   Int?
+  employee     Employee?   @relation(fields: [employeeId], references: [id])
+  metadata     Json?
+  createdAt    DateTime    @default(now())
+
+  @@index([createdAt])
+  @@index([module])
+}
+
+enum ModuleName {
+  ENVIRONMENTAL
+  SOCIAL
+  GOVERNANCE
+  GAMIFICATION
+}
+
+// Aggregated per-department score, recalculated whenever underlying data changes.
+// Environmental writes environmentalScore; Social/Governance teammates will write
+// their columns; totalScore is the weighted aggregate.
+model DepartmentScore {
+  id                 Int        @id @default(autoincrement())
+  departmentId       Int        @unique
+  department         Department @relation(fields: [departmentId], references: [id])
+  environmentalScore Decimal    @db.Decimal(5, 2) @default(0)
+  socialScore        Decimal    @db.Decimal(5, 2) @default(0)
+  governanceScore    Decimal    @db.Decimal(5, 2) @default(0)
+  totalScore         Decimal    @db.Decimal(5, 2) @default(0)
+  lastCalculatedAt   DateTime   @updatedAt
 }
