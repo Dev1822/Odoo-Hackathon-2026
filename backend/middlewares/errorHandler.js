@@ -1,20 +1,44 @@
 const winston = require('winston');
+const DailyRotateFile = require('winston-daily-rotate-file');
+
+const logFormat = winston.format.combine(
+  winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+  winston.format.errors({ stack: true }),
+  winston.format.json()
+);
+
+const transports = [
+  new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.simple()
+    )
+  })
+];
+
+// Add daily rotate file transport for production
+if (process.env.NODE_ENV === 'production') {
+  transports.push(
+    new DailyRotateFile({
+      filename: 'logs/error-%DATE%.log',
+      datePattern: 'YYYY-MM-DD',
+      level: 'error',
+      maxSize: '20m',
+      maxFiles: '14d'
+    }),
+    new DailyRotateFile({
+      filename: 'logs/combined-%DATE%.log',
+      datePattern: 'YYYY-MM-DD',
+      maxSize: '20m',
+      maxFiles: '14d'
+    })
+  );
+}
 
 const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.errors({ stack: true }),
-    winston.format.json()
-  ),
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.simple()
-      )
-    })
-  ]
+  level: process.env.LOG_LEVEL || 'info',
+  format: logFormat,
+  transports
 });
 
 class ApiError extends Error {
@@ -33,28 +57,30 @@ class ApiError extends Error {
 const errorHandler = (err, req, res, next) => {
   let { statusCode, message } = err;
 
+  const logData = {
+    requestId: req.id,
+    userId: req.user?.id,
+    route: `${req.method} ${req.url}`,
+    message: err.message,
+    statusCode: err.statusCode || statusCode || 500,
+    stack: err.stack
+  };
+
   if (err.isOperational) {
-    logger.error({
-      message: err.message,
-      statusCode: err.statusCode,
-      stack: err.stack,
-      url: req.url,
-      method: req.method
-    });
+    logger.error(logData);
   } else {
     statusCode = 500;
     message = 'Internal Server Error';
     logger.error({
-      message: 'Unexpected error',
-      error: err,
-      url: req.url,
-      method: req.method
+      ...logData,
+      error: 'Unexpected error'
     });
   }
 
   const response = {
     success: false,
     message,
+    requestId: req.id,
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   };
 

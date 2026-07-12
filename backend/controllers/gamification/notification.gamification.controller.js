@@ -1,6 +1,6 @@
-const asyncHandler = require('../../utils/asyncHandler');
-const apiResponse = require('../../utils/apiResponse');
-const notificationService = require('../../services/notification.service');
+const asyncHandler = require('../../utils/asyncHandler.gamification');
+const apiResponse = require('../../utils/apiResponse.gamification');
+const notificationService = require('../../services/notification.gamification.service');
 
 const getNotifications = asyncHandler(async (req, res) => {
   const { page, limit } = req.query;
