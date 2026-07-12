@@ -1,5 +1,5 @@
 const prisma = require('../config/db');
-const rewardService = require('../services/gamification/reward.service');
+const rewardService = require('../services/gamification/reward.gamification.service');
 
 describe('Reward Service - Concurrency', () => {
   let testEmployees = [];
@@ -11,7 +11,7 @@ describe('Reward Service - Concurrency', () => {
       const employee = await prisma.employee.create({
         data: {
           name: `Test User ${i}`,
-          email: `testuser${i}@example.com`,
+          email: `testuser-${i}-${Date.now()}-${Math.random().toString(36).substring(7)}@example.com`,
           role: 'EMPLOYEE',
           totalXp: 1000
         }
@@ -47,6 +47,10 @@ describe('Reward Service - Concurrency', () => {
     });
     await prisma.reward.delete({
       where: { id: testReward.id }
+    });
+    
+    await prisma.notification.deleteMany({
+      where: { employeeId: { in: testEmployees.map(e => e.id) } }
     });
     
     for (const employee of testEmployees) {
