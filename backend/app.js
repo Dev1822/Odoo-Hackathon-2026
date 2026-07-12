@@ -106,6 +106,9 @@ app.use('/api/shared/department-scores', require('./routes/shared/departmentScor
 // Dashboard routes
 app.use('/api/dashboard', require('./routes/dashboard/dashboard.routes'));
 
+// Reports routes
+app.use('/api/reports', require('./routes/reports/report.routes'));
+
 // Error handler (must be last)
 app.use(errorHandler);
 
