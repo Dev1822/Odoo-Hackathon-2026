@@ -103,6 +103,9 @@ app.use('/api/environmental/goals', require('./routes/environmental/goal.environ
 app.use('/api/shared/activity-log', require('./routes/shared/activityLog.routes'));
 app.use('/api/shared/department-scores', require('./routes/shared/departmentScore.routes'));
 
+// Dashboard routes
+app.use('/api/dashboard', require('./routes/dashboard/dashboard.routes'));
+
 // Error handler (must be last)
 app.use(errorHandler);
 
