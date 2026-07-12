@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { authenticate, authorize } = require('../../middlewares/auth');
-const validate = require('../../middlewares/validate');
-const { createChallengeSchema, updateChallengeSchema, updateStatusSchema } = require('../../utils/schemas/challenge.schema');
-const challengeController = require('../../controllers/gamification/challenge.controller');
+const { authenticate, authorize } = require('../../middlewares/auth.gamification');
+const validate = require('../../middlewares/validate.gamification');
+const { createChallengeSchema, updateChallengeSchema, updateStatusSchema } = require('../../utils/schemas/challenge.gamification.schema');
+const challengeController = require('../../controllers/gamification/challenge.gamification.controller');
 
 router.post('/', authenticate, authorize('MANAGER', 'ADMIN'), validate(createChallengeSchema), challengeController.createChallenge);
 router.get('/', authenticate, challengeController.listChallenges);
