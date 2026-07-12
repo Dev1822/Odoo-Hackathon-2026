@@ -2,7 +2,7 @@
 // Keep the notify(employeeId, type, payload) signature stable so calling code
 // elsewhere doesn't need to change.
 
-const prisma = require('./config/db');
+const prisma = require('../config/db');
 
 const notify = async (employeeId, type, payload) => {
   try {
